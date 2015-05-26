@@ -10,8 +10,8 @@
     <xsl:include href="titlepage.xsl"/>
 
     <!-- Define here the location where the cover and header images are places -->
-    <xsl:variable name="cover.image.filename">##HOME##/xxx/LowayCover.jpg</xsl:variable>
-    <xsl:variable name="header.image.filename">##HOME##/xxx/Loway.jpg</xsl:variable>
+    <xsl:variable name="cover.image.filename">##HOME##/Pictures/pdf-style/LowayCover.jpg</xsl:variable>
+    <xsl:variable name="header.image.filename">##HOME##/Pictures/pdf-style/Loway.jpg</xsl:variable>
 
     <!-- This prevents the text justification of the document -->
     <xsl:attribute-set name="root.properties">
