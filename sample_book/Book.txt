@@ -1,0 +1,11 @@
+My Sample Book
+==============
+:Author: Me
+:Revision: ver 1
+:Date: May 1, 1999
+
+
+include::./Chapter1.txt[]
+
+
+

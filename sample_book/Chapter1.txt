@@ -1,0 +1,39 @@
+A Chapter
+---------
+
+This is Chapter 1 
+
+TIP: It's nice to have tips.
+
+
+A large image
+~~~~~~~~~~~~~
+
+Large
+
+image:./Pictures/Splash.png[Wombat Dialer Spalsh Screen]
+
+A mid-sized image
+~~~~~~~~~~~~~~~~~
+
+Mid-size
+
+image:./Pictures/Trunks.png[Trunks]
+
+A small image
+~~~~~~~~~~~~~
+
+Small
+
+image:./Pictures/Dialer.png[The Dialer]
+
+A large dotfile image
+~~~~~~~~~~~~~~~~~~~~~
+
+Dotfile
+
+
+
+
+
+

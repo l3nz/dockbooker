@@ -1,0 +1,17 @@
+{
+  "input": "Book.txt",
+  "output": "Book_v1",
+  "docbook": {
+      "custom-style": "pdf-style/LowayStyle.xsl"
+  },
+  "img": {
+
+    "Pictures/Splash.png": {"size": "MAXI"},
+"Pictures/Trunks.png": {"size": "MIDI"},
+"Pictures/Dialer.png": {"size": "MINI"},
+    "Pictures/dot_call_lifecycle.png": {"size": "MAXI", "dotsrc": "Pictures/dot/call_lifecycle.dot.txt"}
+
+
+   }
+}
+
