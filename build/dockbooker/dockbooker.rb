@@ -29,7 +29,7 @@ SIZE={
 CONVERT="convert"
 DOT="dot"
 DPI=" -density 60x60 -units PixelsPerCentimeter "
-
+WATERMARK=true
 
 # copy all data from  /in
 %x{cp -r /in/* #{srcdir}}
@@ -63,12 +63,15 @@ data["img"].map.each { |name,attrs|
 		puts( "Converting #{src_file}")
 		opts = SIZE[ attrs["size"].to_sym ]
 
-		%x{convert #{src_file} -gravity southwest -annotate +0+0 "#{src_file}" #{src_file}}
 
-
-		# -gravity southwest -annotate +0+0 \"MAXI\" 
 		cmd = "convert #{src_file} #{opts} #{DPI} #{src_file}"
 		%x{#{cmd}}
+
+
+		if WATERMARK
+			fnam = File.basename(src_file) + " (" +  attrs["size"] + ")"
+			%x{convert #{src_file} -gravity southwest -annotate +0+0 "#{fnam}" #{src_file}}
+		end
 
 		ext = File.extname( src_file ).upcase
 
