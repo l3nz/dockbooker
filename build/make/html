@@ -1,0 +1,6 @@
+#! /bin/bash
+
+/opt/dockbooker/dockbooker.rb --chunked
+
+
+

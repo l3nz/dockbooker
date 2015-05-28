@@ -1,0 +1,7 @@
+#! /bin/bash
+
+/make/pdf
+/make/html
+/make/epub
+
+

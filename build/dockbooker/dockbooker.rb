@@ -5,16 +5,41 @@ require 'json'
 require 'pp'
 require 'erb'
 require 'net/http'
+require 'optparse'
 
 #
 srcdir = "/opt/dockbooker/data"
 destfolder="/out"
-
-
-#
 fopxlst= "/usr/share/sgml/docbook/xsl-stylesheets-1.78.1"
 file_name = "dockbooker.json"
 mode = :PDF # :CHUNKED
+WATERMARK=false
+
+
+# process command line options
+options = {}
+OptionParser.new do |opts|
+opts.banner = "Usage: dockbooker.rb [options]"
+
+	opts.on("-p", "--pdf", "Generate PDF") do |v|
+		mode = :PDF
+	end
+
+	opts.on("-c", "--chunked", "Generate chunked HTML") do |v|
+		mode = :CHUNKED
+	end
+
+	opts.on("-e", "--epub", "Generate epub") do |v|
+		mode = :EPUB
+	end
+
+	opts.on("-w", "--[no]watermark", "Adds a watermark on images") do |v|
+		WATERMARK = v
+	end
+
+end.parse!
+
+
 
 #
 
@@ -25,11 +50,15 @@ SIZE={
 	:SAME => " -colors 256 -depth 8 +dither",
 }
 
+puts( "\n\n")
+puts( "=============================================")
+puts( "   Building as #{mode}")
+puts( "=============================================")
+
 
 CONVERT="convert"
 DOT="dot"
 DPI=" -density 60x60 -units PixelsPerCentimeter "
-WATERMARK=true
 
 # copy all data from  /in
 %x{cp -r /in/* #{srcdir}}
@@ -37,10 +66,11 @@ WATERMARK=true
 json_blob = File.read( srcdir + "/" +  file_name)
 data = JSON.parse( json_blob )
 
-
+#
 # processa le immagini
+#
 
-pp data["img"]
+#pp data["img"]
 
 input_file= data["input"]
 input_name = File.basename( input_file, ".*" )
