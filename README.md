@@ -23,7 +23,7 @@ contents of /in are read-only, it is perfectly acceptable to map /in and /out to
 
 You will run the Docker image as:
 
-   docker run -it --rm \
+     docker run -it --rm \
        -v $(readlink -m .):/in \
        -v $(readlink -m ./out):/out \
        lenz/dockbooker \
@@ -60,7 +60,7 @@ It is possible to customize PDFs by adding Docbook customization files. The one 
 a picture on the cover page and a small logo on the footer of each page. 
 
 In theory, you can customize the appearance of Docbook books quite a lot. In practice, it's so 
-absurdly complex that and contribution on how to do this in practice is welcome.
+absurdly complex that any contribution on how to do this in practice is welcome.
 
 
 
