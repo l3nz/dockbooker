@@ -8,5 +8,10 @@ all:
 pdf:
 	$(CMD) lenz/dockbooker /make/pdf
 
+html:
+	$(CMD) lenz/dockbooker /make/html
+
+epub:
+	$(CMD) lenz/dockbooker /make/epub
 
 
