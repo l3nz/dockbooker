@@ -40,6 +40,9 @@ A large dotfile image
 
 Dotfile
 
+image:./Pictures/dot_call_lifecycle.png[]
+
+
 
 
 

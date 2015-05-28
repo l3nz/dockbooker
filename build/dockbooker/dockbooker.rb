@@ -50,7 +50,7 @@ data["img"].map.each { |name,attrs|
 
 	#%x{./backupContainer.sh web#{cli}}
 	src_file = srcdir + "/" + name #+ "_____"
-	if File.exists?( src_file )
+	if File.exists?( src_file ) || !attrs["dotsrc"].nil?
 
 		dotsrc = attrs["dotsrc"]
 		if !dotsrc.nil?

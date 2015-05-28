@@ -1,0 +1,53 @@
+digraph AstManagerProcess {
+  size ="8.5, 11";
+
+rankdir=LR;
+concentrate=true;
+TITLE [label="Call life-cycle" fontcolor="blue" fontsize="18" shape="plaintext"];
+
+
+RS_LOST [color="red"];
+TERMINATED [color="green"];
+RS_AGENT [color="green"];
+RS_BLACKLIST [color="green"];
+
+RD_AGENTREQ [color="gold" shape="diamond"];
+REQUESTED [color="gold" shape="diamond"];
+DIALLING [color="gold" shape="diamond"];
+CONNECTED [color="gold" shape="diamond"];
+
+IN_HOPPER->RD_RESERVED [label="Preview"];
+RD_RESERVED->RS_AGENTSKIP;
+RD_SCHEDULED->RD_AGENTREQ;
+
+IN_HOPPER->RS_BLACKLIST;
+IN_HOPPER->SCHEDULED [label="Direct"];
+IN_HOPPER->RD_SCHEDULED [label="Reverse"];
+SCHEDULED->REQUESTED ;
+REQUESTED->DIALLING;
+DIALLING->CONNECTED;
+CONNECTED->TERMINATED;
+
+REQUESTED->RS_ERROR;
+DIALLING->RS_BUSY;
+DIALLING->RS_NUMBER;
+DIALLING->RS_NOANSWER;
+DIALLING->RS_REJECTED;
+
+CONNECTED->RS_TIMEOUT;
+CONNECTED->RS_AGENT [label="Call OK, Agent reqd"];
+
+
+REQUESTED->RS_LOST
+CONNECTED->RS_LOST
+DIALLING->RS_LOST
+
+RD_RESERVED->RD_SCHEDULED;
+RD_AGENTREQ->REQUESTED;
+RD_AGENTREQ->RS_NOAGENT;
+
+{rank="1"; "IN_HOPPER"}
+{rank="same";  "RD_AGENTREQ"; "REQUESTED"; "DIALLING"; "CONNECTED";  "RD_SCHEDULED"; "RD_RESERVED"  }
+
+
+}
