@@ -6,9 +6,14 @@
   },
   "img": {
 
+  	"Pictures/pdf-style/LowayCover.jpg": {"size": "MAXI"},
+	"Pictures/pdf-style/Loway.jpg": {"size": "MAXI"},
+
+
     "Pictures/Splash.png": {"size": "MAXI"},
 "Pictures/Trunks.png": {"size": "MIDI"},
 "Pictures/Dialer.png": {"size": "MINI"},
+"Pictures/tumblr.jpg": {"size": "MIDI"},
     "Pictures/dot_call_lifecycle.png": {"size": "MAXI", "dotsrc": "Pictures/dot/call_lifecycle.dot.txt"}
 
 

@@ -16,7 +16,7 @@ example, images for PDF are to be 150dpi, JPEGs have a defined compression ratio
 
 docker run -it --rm -v /Users/lenz/dev/github/dockbooker/sample_book:/in -v /Users/lenz/dev/github/dockbooker/sample_book:/out db /opt/dockbooker/dockbooker.rb
 
-
+docker run -it --rm -v $(readlink -m .):/in -v $(readlink -m ./build):/out db /opt/dockbooker/dockbooker.rb
 
 ## Centos7 Installation
 

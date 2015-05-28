@@ -20,6 +20,14 @@ Mid-size
 
 image:./Pictures/Trunks.png[Trunks]
 
+A mid-sized JPG image
+~~~~~~~~~~~~~~~~~~~~~
+
+This is a JPG
+
+image:./Pictures/tumblr.jpg[Trunks]
+
+
 A small image
 ~~~~~~~~~~~~~
 

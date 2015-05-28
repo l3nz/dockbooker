@@ -14,21 +14,21 @@ destfolder="/out"
 #
 fopxlst= "/usr/share/sgml/docbook/xsl-stylesheets-1.78.1"
 file_name = "dockbooker.json"
-mode = :PDF
+mode = :PDF # :CHUNKED
 
 #
 
 SIZE={
-	:MAXI => "-resize 960  -sharpen 2 -colors 256 -depth 8 +dither",
-	:MIDI => "-resize 480  -sharpen 2 -colors 256 -depth 8 +dither",
-	:MINI => "-resize 240  -sharpen 2 -colors 256 -depth 8 +dither",
-	:SAME => "-colors 256 -depth 8 +dither",
+	:MAXI => "  -resize 850  -sharpen 2 -colors 256 -depth 8 +dither",
+	:MIDI => "  -resize 600  -sharpen 2 -colors 256 -depth 8 +dither",
+	:MINI => "  -resize 300  -sharpen 2 -colors 256 -depth 8 +dither",
+	:SAME => " -colors 256 -depth 8 +dither",
 }
 
 
 CONVERT="convert"
 DOT="dot"
-DPI=" -density 72x72 -units PixelsPerInch "
+DPI=" -density 60x60 -units PixelsPerCentimeter "
 
 
 # copy all data from  /in
@@ -62,12 +62,22 @@ data["img"].map.each { |name,attrs|
 
 		puts( "Converting #{src_file}")
 		opts = SIZE[ attrs["size"].to_sym ]
-		cmd = "convert -colors 256 #{src_file} #{opts} #{DPI} #{src_file}"
+
+		%x{convert #{src_file} -gravity southwest -annotate +0+0 "#{src_file}" #{src_file}}
+
+
+		# -gravity southwest -annotate +0+0 \"MAXI\" 
+		cmd = "convert #{src_file} #{opts} #{DPI} #{src_file}"
 		%x{#{cmd}}
 
-		puts( "EXT: " +  File.extname( src_file ) )
+		ext = File.extname( src_file ).upcase
 
-		if File.extname( src_file ).upcase == ".PNG"
+		# bug #5 - JPGs have wrong size
+		if ext == ".JPG"
+			%x{convert #{src_file} -resize 100% #{DPI} #{src_file}}
+		end
+
+		if ext == ".PNG"
 			puts( "Optimizing PNG: #{src_file} ")
 			%x{optipng #{src_file} }
 		end
@@ -102,7 +112,7 @@ case mode
 
 	when :CHUNKED
 		%x{cd #{srcdir} && #{a2x_call} --icons-dir=asciidoc_icons -f chunked #{input_file} }
-		%x{cp /usr/share/asciidoc/stylesheets/docbook-xsl.css /vagrant/#{input_name}.chunked/}
+		%x{cp /usr/share/asciidoc/stylesheets/docbook-xsl.css #{destfolder}/#{input_name}.chunked/}
 		%x{mkdir -p #{destfolder}/#{input_name}.chunked/asciidoc_icons}
 		%x{cp -r /usr/share/asciidoc/images/icons #{destfolder}/#{input_name}.chunked/asciidoc_icons}
 
