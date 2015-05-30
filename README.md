@@ -62,6 +62,13 @@ a picture on the cover page and a small logo on the footer of each page.
 In theory, you can customize the appearance of Docbook books quite a lot. In practice, it's so 
 absurdly complex that any contribution on how to do this in practice is welcome.
 
+The supplied XSLT file includes:
+
+* An image on the cover page, scaled to be 8.0 cm tall
+* An image in the footer, scaled to be 1.0 cm tall
+
+Feel free to improve it.
+
 
 
 
