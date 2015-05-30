@@ -69,6 +69,13 @@ The supplied XSLT file includes:
 
 Feel free to improve it.
 
+See also:
+
+* Tips on using fonts: http://www.simon-cozens.org/content/docbook-fop-fonts-and-multilingua
+* Preprocessing fonts: http://www.incenp.org/notes/2012/fop-ttf-fonts.html
+* A (long) list of FOP configuration parameters: http://docbook.sourceforge.net/release/xsl/1.77.0/doc/fo/
+* Fonts embedded in FOP: https://xmlgraphics.apache.org/fop/2.0/fonts.html
+
 
 
 
