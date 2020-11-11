@@ -94,7 +94,7 @@ data["img"].map.each { |name,attrs|
 		opts = SIZE[ attrs["size"].to_sym ]
 
 
-		cmd = "convert #{src_file} #{opts} #{DPI} #{src_file}"
+		cmd = "convert #{src_file}  -alpha opaque  #{opts} #{DPI} #{src_file}"
 		%x{#{cmd}}
 
 
